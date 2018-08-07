@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Lista Pedidos</title>
+    </h:head>
+    <h:body>
+        <h:form id="formPrincipal">
+        <p:dataTable id="tabelaPedidos" emptyMessage="Nenhum pedido."
+                     resizableColumns="true" tableStyle="width:auto"
+                     var="pedido" value="#{pedidoGerenciar.pedidos}">
+            <p:column headerText="Nome: ">
+                <h:outputText value="#{pedido.nome}"/>
+            </p:column>
+            <p:column headerText="Pedido: ">
+                <h:outputText value="#{pedido.unidade}"/>
+            </p:column>
+            <p:column headerText=" " style="text-align: center">
+                        <p:commandLink value="excluir"  immediate="true" 
+                                       action="#{pedidoGerenciar.excluirPedido(pedido)}"
+                                       update="@form">
+                            <p:confirm header="Excluir" message="Você tem certeza que deseja excluir este pedido?"
+                                       icon="ui-icon-alert"/>
+                        </p:commandLink>
+                    </p:column>
+
+        </p:dataTable>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:outputPanel style="width: 100%; text-align:center" layout="block"> 
+                        <p:commandButton value="sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:outputPanel>
+                </p:confirmDialog>
+            </h:form>    
+        
+        <h:button outcome="novoPedido" value="Novo Pedido"/>
+ 
+    </h:body>
+</html>
+
