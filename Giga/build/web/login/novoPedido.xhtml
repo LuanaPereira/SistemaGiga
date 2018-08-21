@@ -19,7 +19,7 @@
                                      required="true" requiredMessage="Pedido obrigatória"/>
                     </h:panelGrid>
                     <p:outputPanel style="width: 100%; text-align:center" layout="block">
-                        <p:commandButton value="Confirmar" action="#{pedidoGerenciar.inserirPedido()}"/>  
+                        <p:commandButton value="Confirmar" action="#{pedidoGerenciar.inserirPedido()}" update="@form"/>  
                         
                     </p:outputPanel>
                     <h:panelGrid columns="1">

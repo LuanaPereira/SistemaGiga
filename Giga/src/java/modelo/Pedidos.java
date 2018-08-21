@@ -20,7 +20,10 @@ public class Pedidos implements Serializable {
     private String nome;
     @Column(length = 30)
     private String unidade; 
+    @Column 
+   private boolean atendido;
 
+   
 
 
     
@@ -28,12 +31,14 @@ public class Pedidos implements Serializable {
         id = 0;
         nome = "";
         unidade = "";
+        atendido = false;
     }
     
-    public Pedidos(String nome, String unidade){
+    public Pedidos(String nome, String unidade, boolean atendido){
         this.id = 0;
         this.nome = nome;
         this.unidade = unidade; 
+        this.atendido = false;
     }
 
     public Integer getId() {
@@ -60,6 +65,15 @@ public class Pedidos implements Serializable {
         this.unidade = unidade;
     }
     
+     public boolean isAtendido() {
+        return atendido;
+    }
+
+    public void setAtendido(boolean atendido) {
+        this.atendido = atendido;
+    }
+          
+
 
     @Override
     public int hashCode() {

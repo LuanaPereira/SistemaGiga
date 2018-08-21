@@ -27,6 +27,9 @@ public class PedidoGerenciar implements Serializable{
         mostraPopupNovo = false; 
     }
     
+    public void atenderPedido(Pedidos u){
+        //dao.alterar(u.setAtendido());
+    }
     public void excluirPedido(Pedidos u){
         dao.excluir(u.getId());
         ped.remove(u); // remove da List

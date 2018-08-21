@@ -8,16 +8,18 @@
     </h:head>
     <h:body>
         <h:form id="formPrincipal">
-        <p:dataTable id="tabelaPedidos" emptyMessage="Nenhum pedido."
+            <p:panelGrid columns="2" >
+                <p:panel >       
+                    <p:dataTable id="tabelaPedidos" emptyMessage="Nenhum pedido."
                      resizableColumns="true" tableStyle="width:auto"
                      var="pedido" value="#{pedidoGerenciar.pedidos}">
-            <p:column headerText="Nome: ">
-                <h:outputText value="#{pedido.nome}"/>
-            </p:column>
-            <p:column headerText="Pedido: ">
-                <h:outputText value="#{pedido.unidade}"/>
-            </p:column>
-            <p:column headerText=" " style="text-align: center">
+                    <p:column headerText="Nome: ">
+                    <h:outputText value="#{pedido.nome}"/>
+                    </p:column>
+                    <p:column headerText="Pedido: ">
+                        <h:outputText value="#{pedido.unidade}"/>
+                    </p:column>
+                    <p:column headerText=" " style="text-align: center">
                         <p:commandLink value="excluir"  immediate="true" 
                                        action="#{pedidoGerenciar.excluirPedido(pedido)}"
                                        update="@form">
@@ -26,13 +28,18 @@
                         </p:commandLink>
                     </p:column>
 
-        </p:dataTable>
-            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                    <p:outputPanel style="width: 100%; text-align:center" layout="block"> 
-                        <p:commandButton value="sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                        <p:commandButton value="não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                    </p:outputPanel>
-                </p:confirmDialog>
+                    </p:dataTable>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:outputPanel style="width: 100%; text-align:center" layout="block"> 
+                                <p:commandButton value="sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:outputPanel>
+                        </p:confirmDialog>
+                </p:panel>
+                <p:panel>
+                    painel direito
+                </p:panel>
+                </p:panelGrid>
             </h:form>    
         
         <h:button outcome="novoPedido" value="Novo Pedido"/>

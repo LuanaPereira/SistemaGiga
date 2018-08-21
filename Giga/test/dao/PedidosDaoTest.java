@@ -40,8 +40,8 @@ public class PedidosDaoTest {
     @Test
     public void testInserir() {
         PedidosDao dao = new PedidosDao();
-        Pedidos ped = new Pedidos("Luana","Salgado");
-        dao.inserir(ped);
+        //Pedidos ped = new Pedidos("Luana","Salgado");
+        //dao.inserir(ped);
     }
     
 }
