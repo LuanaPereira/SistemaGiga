@@ -11,7 +11,7 @@ import modelo.Administrador;
 import modelo.Pedidos;
 import util.JpaUtil;
 
-public class Dao <T> implements Serializable {
+public class Dao <T> implements Serializable { //Funções para controle do banco de dados usando classe genérica
 
     private final Class<T> classe;
     EntityManager manager;

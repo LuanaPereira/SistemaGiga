@@ -3,6 +3,7 @@ package controle;
 
 import dao.Dao;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -14,8 +15,9 @@ import modelo.Pedidos;
 @ViewScoped
 public class PedidoGerenciar implements Serializable{   
 
-    private List<Pedidos> ped;
+    private List<Pedidos> ped; //Lista com todos os pedidos
     private Dao<Pedidos> dao;
+    private List<Pedidos> atendidos = new ArrayList<>(); //Lista com todos os pedidos atendidos, sendo inicializada com nada dentro
     private Pedidos novo;
     private Pedidos temp;
     private boolean mostraPopupNovo;
@@ -23,12 +25,16 @@ public class PedidoGerenciar implements Serializable{
     public PedidoGerenciar(){
         dao = new Dao(Pedidos.class);
         novo = new Pedidos();
-        ped = dao.listarTodos();
+        ped = dao.listarTodos(); //Pega todos os pedidos do banco de dados e coloca na lista de pedidos
         mostraPopupNovo = false; 
     }
+
     
     public void atenderPedido(Pedidos u){
-        //dao.alterar(u.setAtendido());
+        u.setAtendido(true); //Coloca o status de atendido como verdadeiro para o pedido
+        atendidos.add(u); //Insere o pedido na lista de pedidos atendidos
+        dao.excluir(u.getId()); 
+        ped.remove(u); // remove da List
     }
     public void excluirPedido(Pedidos u){
         dao.excluir(u.getId());
@@ -99,6 +105,13 @@ public class PedidoGerenciar implements Serializable{
 
     public void setTemp(Pedidos temp) {
         this.temp = temp;
+    }
+    public List<Pedidos> getAtendidos() {
+        return atendidos;
+    }
+
+    public void setAtendidos(List<Pedidos> atendidos) {
+        this.atendidos = atendidos;
     }
     
     

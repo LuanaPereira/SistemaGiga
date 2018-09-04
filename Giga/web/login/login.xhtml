@@ -15,16 +15,16 @@
                          <h:outputLabel value="Usuário: "/>
                          <p:inputText id="campoLogin" size="14" value="#{indexControle.adm.login}" 
                                       maxlength="15" required="true" requiredMessage="Nome obrigatório" >
-                         </p:inputText> 
+                         </p:inputText> <!-- Campo de texto para digitar o login e atribui o valor digitado para a variavel login-->
                          <p/>
                          <h:outputLabel value="Senha: "/>
                          <p:password  feedback="false" size="10"  maxlength="10"
                                       value="#{indexControle.adm.senha}"
-                                      required="true" requiredMessage="Senha obrigatória" />  
+                                      required="true" requiredMessage="Senha obrigatória" />  <!-- Campo de texto para senha e atribui o valor digitado para a variavel senha-->
                          <p/>
                          <p:commandButton value="OK" icon="ui-icon-check" ajax="false"
-                                          action="#{indexControle.autenticar()}" styleClass="ui-state-hover"/> 
-                         <p/>
+                                          action="#{indexControle.autenticar()}" styleClass="ui-state-hover"/> <!-- Botão que chama a função para autenticar o login com as informações digitadas na classe IndexControle-->
+                         <p/>       
                          <p:messages showIcon="false" closable="true" />
                      </h:form>
                  </p:outputPanel>

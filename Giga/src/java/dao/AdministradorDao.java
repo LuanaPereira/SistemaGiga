@@ -10,7 +10,7 @@ import util.JpaUtil;
 
 public class AdministradorDao implements Serializable { 
     
-    public boolean inserir(Administrador adm) {
+    public boolean inserir(Administrador adm) { //Insere um novo administrador no banco de dados
         EntityManager manager = JpaUtil.getEntityManager();
         EntityTransaction tx = manager.getTransaction();
         tx.begin();
@@ -19,7 +19,7 @@ public class AdministradorDao implements Serializable {
         manager.close();
         return true;
     } 
-    public Administrador autenticar(Administrador adm){
+    public Administrador autenticar(Administrador adm){ //Autenticar os dados digitados na tela de login com as informações do banco
         Administrador temp = null; // administrador retornado na consulta ao banco
         EntityManager manager = JpaUtil.getEntityManager();
         TypedQuery<Administrador> query = manager.createQuery("SELECT a FROM Administrador a WHERE a.login = :login AND a.senha = :senha", Administrador.class); 
