@@ -3,11 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Luana/Desktop/Giga/src/java/indexControle.java</file>
-            <file>file:/C:/Users/Luana/Desktop/Giga/web/login/listaPedidos.xhtml</file>
-            <file>file:/C:/Users/Luana/Desktop/Giga/src/java/dao/PedidosDao.java</file>
-            <file>file:/C:/Users/Luana/Desktop/Giga/src/java/META-INF/persistence.xml</file>
-            <file>file:/C:/Users/Luana/Desktop/Giga/src/java/controle/PedidoGerenciar.java</file>
+            <file>file:/C:/Users/a120185/Downloads/Giga/web/login/listaPedidos.xhtml</file>
+            <file>file:/C:/Users/a120185/Downloads/Giga/web/login/login.xhtml</file>
+            <file>file:/C:/Users/a120185/Downloads/Giga/src/java/controle/PedidoGerenciar.java</file>
+            <file>file:/C:/Users/a120185/Downloads/Giga/src/java/dao/AdministradorDao.java</file>
+            <file>file:/C:/Users/a120185/Downloads/Giga/src/java/indexControle.java</file>
+            <file>file:/C:/Users/a120185/Downloads/Giga/src/java/META-INF/persistence.xml</file>
+            <file>file:/C:/Users/a120185/Downloads/Giga/src/java/modelo/Administrador.java</file>
+            <file>file:/C:/Users/a120185/Downloads/Giga/web/login/template.xhtml</file>
+            <file>file:/C:/Users/a120185/Downloads/Giga/src/java/dao/PedidosDao.java</file>
+            <file>file:/C:/Users/a120185/Downloads/Giga/src/java/dao/Dao.java</file>
+            <file>file:/C:/Users/a120185/Downloads/Giga/web/login/novoPedido.xhtml</file>
+            <file>file:/C:/Users/a120185/Downloads/Giga/src/java/modelo/Pedidos.java</file>
         </group>
     </open-files>
 </project-private>

@@ -15,9 +15,9 @@ import modelo.Pedidos;
 @ViewScoped
 public class PedidoGerenciar implements Serializable{   
 
-    private List<Pedidos> ped; //Lista com todos os pedidos
+    private List<Pedidos> ped; 
     private Dao<Pedidos> dao;
-    private List<Pedidos> atendidos = new ArrayList<>(); //Lista com todos os pedidos atendidos, sendo inicializada com nada dentro
+    private List<Pedidos> atendidos = new ArrayList<>(); 
     private Pedidos novo;
     private Pedidos temp;
     private boolean mostraPopupNovo;
@@ -25,20 +25,20 @@ public class PedidoGerenciar implements Serializable{
     public PedidoGerenciar(){
         dao = new Dao(Pedidos.class);
         novo = new Pedidos();
-        ped = dao.listarTodos(); //Pega todos os pedidos do banco de dados e coloca na lista de pedidos
+        ped = dao.listarTodos(); 
         mostraPopupNovo = false; 
     }
 
     
     public void atenderPedido(Pedidos u){
-        u.setAtendido(true); //Coloca o status de atendido como verdadeiro para o pedido
-        atendidos.add(u); //Insere o pedido na lista de pedidos atendidos
-        dao.excluir(u.getId()); 
-        ped.remove(u); // remove da List
+        u.setAtendido(true); 
+        atendidos.add(u); 
+        dao.alterar(u); 
+        ped.remove(u); 
     }
     public void excluirPedido(Pedidos u){
         dao.excluir(u.getId());
-        ped.remove(u); // remove da List
+        ped.remove(u); 
     }
     
     public void inserirPedido(){
@@ -113,7 +113,4 @@ public class PedidoGerenciar implements Serializable{
     public void setAtendidos(List<Pedidos> atendidos) {
         this.atendidos = atendidos;
     }
-    
-    
-    
 }

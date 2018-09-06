@@ -21,11 +21,7 @@ public class Pedidos implements Serializable {
     @Column(length = 30)
     private String unidade; 
     @Column 
-   private boolean atendido;
-
-   
-
-
+    private boolean atendido;
     
     public Pedidos(){
         id = 0;

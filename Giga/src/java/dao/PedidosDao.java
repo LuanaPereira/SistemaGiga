@@ -7,7 +7,7 @@ import modelo.Pedidos;
 import util.JpaUtil;
 
 public class PedidosDao {
-    public boolean inserir(Pedidos ped) { //Insere um novo pedido no banco de dados
+    public boolean inserir(Pedidos ped) { 
         EntityManager manager = JpaUtil.getEntityManager();
         EntityTransaction tx = manager.getTransaction();
         tx.begin();

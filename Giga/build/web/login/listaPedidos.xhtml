@@ -2,66 +2,71 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Lista Pedidos</title>
-    </h:head>
-    <h:body>
-        <h:form id="formPrincipal">
-            <p:panelGrid columns="2" >
-                <p:panel >       
-                    <p:dataTable id="tabelaPedidos" emptyMessage="Nenhum pedido."
-                     resizableColumns="true" tableStyle="width:auto"
-                     var="pedido" value="#{pedidoGerenciar.pedidos}"> <!-- Cria tabela para listar todos os pedidos feitos, define a variavel como "pedido" e pega os valores da lista de pedidos da classe PedidoGerenciar -->
-                    <p:column headerText="Nome: ">
-                    <h:outputText value="#{pedido.nome}"/> <!-- Pega o nome da pessoa que fez o pedido e coloca na primeira coluna -->
-                    </p:column>
-                    <p:column headerText="Pedido: ">
-                        <h:outputText value="#{pedido.unidade}"/> <!-- Pega o que foi pedido e coloca na segunda coluna -->
-                    </p:column>
-                    <p:column headerText=" " style="text-align: center">
-                        <p:commandLink value="Cancelar"  immediate="true" 
-                                       action="#{pedidoGerenciar.excluirPedido(pedido)}"
-                                       update="@form">
-                            <p:confirm header="Cancelar" message="Você tem certeza que deseja cancelar este pedido?"
-                                       icon="ui-icon-alert"/>
-                        </p:commandLink> <!-- Botão para excluir o pedido, quando apertar ele chama a função excluir pedido e passa como parametro o pedido da linha -->
-                    </p:column>
-                    <p:column headerText=" " style="text-align: center">
-                        <p:commandLink value="Atendido"  immediate="true" 
-                                       action="#{pedidoGerenciar.atenderPedido(pedido)}"
-                                       update="@form">
-                            <p:confirm header="Atendido" message="Pedido concluido?"
-                                       icon="ui-icon-alert"/>
-                        </p:commandLink> <!-- Botão para atender o pedido, quando apertar ele chama a função para atender o pedido e passa como parametro o pedido da linha -->
-                    </p:column>
-        
-                    </p:dataTable>
-                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                            <p:outputPanel style="width : 100%; text-align:center" layout="block"> 
-                                <p:commandButton value="sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                <p:commandButton value="não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                            </p:outputPanel>
-                        </p:confirmDialog>
-                </p:panel>
-                <p:panel>
-                    <p:dataTable id="tabelaPedidosAtendidos" emptyMessage="Nenhum pedido."
-                     resizableColumns="true" tableStyle="width:auto"
-                     var="atendido" value="#{pedidoGerenciar.atendidos}"> <!-- Segunda tabela com os pedidos atendidos, define como variavel "atendido" e pega os valores da lista de pedidos atendidos da classe PedidoGerenciar -->
-                    <p:column headerText="Nome: ">
-                        <h:outputText value="#{atendido.nome}"/> <!-- Pega o nome da pessoa da lista de pedidos atendidos e coloca na primeira coluna -->
-                    </p:column>
-                    <p:column headerText="Pedido: ">
-                        <h:outputText value="#{atendido.unidade}"/> <!-- Pego o que foi pedido da lista de pedidos atendidos e coloca na segunda coluna -->
-                    </p:column>
-                    </p:dataTable>
-                    
-                </p:panel>
-                </p:panelGrid>
-            </h:form>    
-        
-        <h:button outcome="novoPedido" value="Novo Pedido"/> <!-- Botão para chamar a tela de um novo pedido -->
- 
-    </h:body>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="template.xhtml">
+        <ui:define name="body">
+            <h:head>
+                <title>Lista Pedidos</title>
+            </h:head>
+            <h:body>
+                <h:form id="formPrincipal">
+                    <p:panelGrid columns="2" >
+                        <p:panel >       
+                            <p:dataTable id="tabelaPedidos" emptyMessage="Nenhum pedido."
+                             resizableColumns="true" tableStyle="width:auto"
+                             var="pedido" value="#{pedidoGerenciar.pedidos}"> 
+                            <p:column headerText="Nome: ">
+                            <h:outputText value="#{pedido.nome}"/> 
+                            </p:column>
+                            <p:column headerText="Pedido: ">
+                                <h:outputText value="#{pedido.unidade}"/>
+                            </p:column>
+                            <p:column headerText=" " style="text-align: center">
+                                <p:commandLink value="Cancelar"  immediate="true" 
+                                               action="#{pedidoGerenciar.excluirPedido(pedido)}"
+                                               update="@form">
+                                    <p:confirm header="Cancelar" message="Você tem certeza que deseja cancelar este pedido?"
+                                               icon="ui-icon-alert"/>
+                                </p:commandLink> 
+                            </p:column>
+                            <p:column headerText=" " style="text-align: center">
+                                <p:commandLink value="Atendido"  immediate="true" 
+                                               action="#{pedidoGerenciar.atenderPedido(pedido)}"
+                                               update="@form">
+                                    <p:confirm header="Atendido" message="Pedido concluido?"
+                                               icon="ui-icon-alert"/>
+                                </p:commandLink> 
+                            </p:column>
+
+                            </p:dataTable>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:outputPanel style="width : 100%; text-align:center" layout="block"> 
+                                        <p:commandButton value="sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </p:outputPanel>
+                                </p:confirmDialog>
+                        </p:panel>
+                        <p:panel>
+                            <p:dataTable id="tabelaPedidosAtendidos" emptyMessage="Nenhum pedido."
+                             resizableColumns="true" tableStyle="width:auto"
+                             var="atendido" value="#{pedidoGerenciar.atendidos}"> 
+                            <p:column headerText="Nome: ">
+                                <h:outputText value="#{atendido.nome}"/> 
+                            </p:column>
+                            <p:column headerText="Pedido: ">
+                                <h:outputText value="#{atendido.unidade}"/> 
+                            </p:column>
+                            </p:dataTable>
+
+                        </p:panel>
+                        </p:panelGrid>
+                    </h:form>    
+
+                <h:button outcome="novoPedido" value="Novo Pedido"/> 
+
+            </h:body>
+        </ui:define>
+    </ui:composition>
 </html>
 

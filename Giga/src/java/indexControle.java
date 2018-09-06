@@ -18,22 +18,22 @@ public class indexControle implements Serializable{
         adm = new Administrador();
     }
     
-    public String autenticar(){ //Validar login que foi digitado na tela de login com as informações do banco
+    public String autenticar(){ 
         this.adm.setLogin(adm.getLogin().toUpperCase());
         AdministradorDao dao = new AdministradorDao();
         Administrador temp;
         temp = dao.autenticar(adm);
-        if (temp == null){  // se houver erro, método autenticar no dao retorna null
+        if (temp == null){  
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário ou senha inválidos", null)); //Mostra mensagem de erro
-            return null;  //fica na página
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário ou senha inválidos", null)); 
+            return null;  
         }  
-        //seta usuario na Sessao
+        
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext ectx = context.getExternalContext();
         HttpSession session = (HttpSession) ectx.getSession(true);
         session.setAttribute("usuarioLogado", temp);        
-        return "listaPedidos";   //Se o login for concluido com sucesso, chama a página da lista de pedidos
+        return "listaPedidos";   
     }
     
       public Administrador getAdm() {
